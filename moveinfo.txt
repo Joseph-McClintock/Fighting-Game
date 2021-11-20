@@ -1,0 +1,7 @@
+DefaultMove, 0, 0, 0
+Fire Ball, 5, 85, 0
+Water Bolt, 4, 90, 0
+Kick, 4, 93, 0
+Slash, 13, 70, 0
+Wing Clip, 3, 67, 30
+Spit Ball, 4, 75, 25
