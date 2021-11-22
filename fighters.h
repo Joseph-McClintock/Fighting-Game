@@ -5,6 +5,7 @@
 class Fighter {
 
 public:
+	std::string name;
 	int health;
 	int atkPower;
 	int defense;
@@ -12,11 +13,15 @@ public:
 	Move move2;
 	Move move3;
 
+	std::vector<Fighter> movesFighterVector;
+
 public:
-	std::string name;
+	
 	Fighter();
 	Fighter(std::string name, int health, int atkPower, int defense, Move move1, Move move2, Move move3);
 
+
+	void parseFightersAndMoves();
 	void openFighterData();
 	void mainMenu();
 	int pickFighter(int playerChoice);

@@ -12,7 +12,7 @@ private:
 	int baseHitChance;
 	int baseReduceHitChance;
 	std::vector<Move> movesRosterVector;
-	std::vector<int> movesRosterVectorLocation;
+	//std::vector<int> movesRosterVectorLocation;
 
 public:
 
@@ -36,9 +36,9 @@ public:
 	//Print info
 
 	void printMoveInfo();
-	void parseMoves(std::string row);
+	void parseMoves();
 	void print();
-	void printMoveByID(int ID);
+	void printMoveByID();
 
 };
 

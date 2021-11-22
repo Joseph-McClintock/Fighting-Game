@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 //#include "MovesRoster.h"
 #include "moves.h"
 #include "fighters.h"
@@ -48,31 +49,50 @@ void Move::setBaseReduceHitChance(int baseReduceHitChance) {
 	this->baseReduceHitChance = baseReduceHitChance;
 }
 
-void Move::parseMoves(std::string row) {
+void Move::parseMoves() {
 
-	size_t rhs = row.find(", ");
-	std::string name = row.substr(0, rhs);
+	std::ifstream myFile;
+	std::vector<std::string> moveInfo;
+	myFile.open("moveinfo.txt", std::ios::in);
+	if (myFile.is_open()) {
+		std::string line2;
+		while (getline(myFile, line2)) {
+			moveInfo.push_back(line2);
+		}
+		myFile.close();
+	}
 
-	size_t lhs = rhs + 1;
-	rhs = row.find(", ", lhs);
-	int baseDamage = stoi(row.substr(lhs, rhs - lhs));
+	for (std::vector<int>::size_type i = 0; i != moveInfo.size(); i++) {
 
-	lhs = rhs + 1;
-	rhs = row.find(", ", lhs);
-	int baseHitChance = stoi(row.substr(lhs, rhs - lhs));
+		size_t rhs = moveInfo[i].find(", ");
+		std::string name = moveInfo[i].substr(0, rhs);
 
-	lhs = rhs + 1;
-	rhs = row.find(", ", lhs);
-	int baseReduceHitChance = stoi(row.substr(lhs, rhs - lhs));
+		size_t lhs = rhs + 1;
+		rhs = moveInfo[i].find(", ", lhs);
+		int baseDamage = std::stoi(moveInfo[i].substr(lhs, rhs - lhs));
 
-	int currentIndex{ 0 };
-	movesRosterVector.push_back(Move(name, baseDamage, baseHitChance, baseReduceHitChance));
-	currentIndex++;
+		lhs = rhs + 1;
+		rhs = moveInfo[i].find(", ", lhs);
+		int baseHitChance = std::stoi(moveInfo[i].substr(lhs, rhs - lhs));
+
+		lhs = rhs + 1;
+		rhs = moveInfo[i].find(", ", lhs);
+		int baseReduceHitChance = std::stoi(moveInfo[i].substr(lhs, rhs - lhs));
+
+		int currentIndex{ 0 };
+		movesRosterVector.push_back(Move(name, baseDamage, baseHitChance, baseReduceHitChance));
+		currentIndex++;
+
+	}
+	
 
 	/*int temp = 0;
 	movesRosterVectorLocation.push_back(temp + 1);*/
 
 }
+
+/// TEST FUNCTIONS BELOW
+/// DELETE LATER
 
 void Move::print() {
 
@@ -90,8 +110,9 @@ void Move::printMoveInfo() {
 
 }
 
-void Move::printMoveByID(int ID) {
+void Move::printMoveByID() {
 	
+	int ID{ };
 	std::cout << "Pick a number between 1 and 6: ";
 	std::cin >> ID;
 	movesRosterVector[ID].printMoveInfo();

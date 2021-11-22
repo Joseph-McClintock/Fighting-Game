@@ -25,28 +25,9 @@ int main()
     
 
     //Opens Move Info text file
-    std::ifstream myFile2;
-    std::vector<std::string> moveInfo;
-    myFile2.open("moveinfo.txt", std::ios::in);
-    if (myFile2.is_open()) {
-        std::string line2;
-        while (getline(myFile2, line2)) {
-            moveInfo.push_back(line2);
-        }
-        myFile2.close();
-    }
-
-    Move* moveRoster = new Move();
-
-    for (std::vector<int>::size_type i = 0; i != moveInfo.size(); i++) {
-        moveRoster->parseMoves(moveInfo[i]);
-    }
-
-    moveRoster->print();
-
-    int input{};
-
-    moveRoster->printMoveByID(input);
+    
+    Fighter* fighterRoster = new Fighter();
+    fighterRoster->parseFightersAndMoves();
 
     std::cout << "Hello World!\n";
 
