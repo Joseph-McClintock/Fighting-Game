@@ -15,7 +15,7 @@ Move::Move(std::string name, int baseDamage, int baseHitChance, int baseReduceHi
 	this->baseHitChance = baseHitChance;
 	this->baseReduceHitChance = baseReduceHitChance;
 	this->movesRosterVector = movesRosterVector;
-	this->movesRosterVectorLocation = movesRosterVectorLocation;
+	//this->movesRosterVectorLocation = movesRosterVectorLocation;
 }
 
 //Getters
@@ -68,8 +68,9 @@ void Move::parseMoves(std::string row) {
 	int currentIndex{ 0 };
 	movesRosterVector.push_back(Move(name, baseDamage, baseHitChance, baseReduceHitChance));
 	currentIndex++;
-	int temp = 0;
-	movesRosterVectorLocation.push_back(temp + 1);
+
+	/*int temp = 0;
+	movesRosterVectorLocation.push_back(temp + 1);*/
 
 }
 
