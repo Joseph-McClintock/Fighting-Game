@@ -143,12 +143,10 @@
     <ClCompile Include="fightapp.cpp" />
     <ClCompile Include="fighters.cpp" />
     <ClCompile Include="moves.cpp" />
-    <ClCompile Include="MovesRoster.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="fighters.h" />
     <ClInclude Include="moves.h" />
-    <ClInclude Include="MovesRoster.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

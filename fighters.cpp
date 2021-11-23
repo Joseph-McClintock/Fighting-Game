@@ -58,7 +58,19 @@ void Fighter::parseFightersAndMoves() {
 		rhs = fighterInfo[i].find(", ", lhs);
 		int defense = std::stoi(fighterInfo[i].substr(lhs, rhs - lhs));
 
+		//Fix
 
+		lhs = rhs + 1;
+		rhs = fighterInfo[i].find(", ", lhs);
+		std::string move1 = fighterInfo[i].substr(lhs, rhs - lhs);
+
+		lhs = rhs + 1;
+		rhs = fighterInfo[i].find(", ", lhs);
+		std::string move2 = fighterInfo[i].substr(lhs, rhs - lhs);
+
+		lhs = rhs + 1;
+		rhs = fighterInfo[i].find(", ", lhs);
+		std::string move2 = fighterInfo[i].substr(lhs, rhs - lhs);
 
 		int currentIndex{ 0 };
 		movesFighterVector.push_back(Fighter(name, health, atkPower, defense, move1, move2, move3));

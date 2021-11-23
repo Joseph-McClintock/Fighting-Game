@@ -27,18 +27,12 @@
     <ClCompile Include="EnemyAI.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MovesRoster.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="fighters.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="moves.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MovesRoster.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
