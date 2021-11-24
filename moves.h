@@ -7,6 +7,7 @@ class Move {
 
 private:
 
+	int id;
 	std::string name;
 	int baseDamage;
 	int baseHitChance;
@@ -17,10 +18,11 @@ private:
 public:
 
 	Move();
-	Move(std::string name, int baseDamage, int baseHitCHance, int baseReduceHitChance);
+	Move(int id, std::string name, int baseDamage, int baseHitCHance, int baseReduceHitChance);
 
 	//Getters
 
+	int getMoveID() const;
 	std::string getName() const;
 	int getBaseDamage() const;
 	int getBaseHitChance() const;
@@ -32,13 +34,16 @@ public:
 	void setBaseDamage(int baseDamage);
 	void setBaseHitChance(int baseHitChance);
 	void setBaseReduceHitChance(int baseReduceHitChance);
+	void setMove(int id);
 
 	//Print info
 
+	void printMoveName(std::string name);
+	Move addMoveData(int ID);
 	void printMoveInfo();
 	void parseMoves();
 	void print();
-	void printMoveByID();
+	void printMoveByID(int id);
 
 };
 

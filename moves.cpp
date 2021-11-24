@@ -1,6 +1,5 @@
 #include <iostream>
 #include <fstream>
-//#include "MovesRoster.h"
 #include "moves.h"
 #include "fighters.h"
 
@@ -10,17 +9,21 @@ Move::Move() {
 	baseHitChance = 90;
 	baseReduceHitChance = 0;*/
 }
-Move::Move(std::string name, int baseDamage, int baseHitChance, int baseReduceHitChance) {
+Move::Move(int id, std::string name, int baseDamage, int baseHitChance, int baseReduceHitChance) {
+	this->id = id;
 	this->name = name;
 	this->baseDamage = baseDamage;
 	this->baseHitChance = baseHitChance;
 	this->baseReduceHitChance = baseReduceHitChance;
 	this->movesRosterVector = movesRosterVector;
-	//this->movesRosterVectorLocation = movesRosterVectorLocation;
 }
 
 //Getters
 
+
+int Move::getMoveID() const {
+	return id;
+}
 std::string Move::getName() const {
 	return name;
 }
@@ -65,9 +68,13 @@ void Move::parseMoves() {
 	for (std::vector<int>::size_type i = 0; i != moveInfo.size(); i++) {
 
 		size_t rhs = moveInfo[i].find(", ");
-		std::string name = moveInfo[i].substr(0, rhs);
+		int id = std::stoi(moveInfo[i].substr(0, rhs));
 
 		size_t lhs = rhs + 1;
+		rhs = moveInfo[i].find(", ", lhs);
+		std::string name = moveInfo[i].substr(lhs, rhs - lhs);
+
+		lhs = rhs + 1;
 		rhs = moveInfo[i].find(", ", lhs);
 		int baseDamage = std::stoi(moveInfo[i].substr(lhs, rhs - lhs));
 
@@ -80,15 +87,41 @@ void Move::parseMoves() {
 		int baseReduceHitChance = std::stoi(moveInfo[i].substr(lhs, rhs - lhs));
 
 		int currentIndex{ 0 };
-		movesRosterVector.push_back(Move(name, baseDamage, baseHitChance, baseReduceHitChance));
+		movesRosterVector.push_back(Move(id, name, baseDamage, baseHitChance, baseReduceHitChance));
 		currentIndex++;
 
 	}
-	
 
-	/*int temp = 0;
-	movesRosterVectorLocation.push_back(temp + 1);*/
+}
 
+Move Move::addMoveData(int id) {
+
+	bool found = false;
+	for (std::vector<int>::size_type i = 0; i != movesRosterVector.size(); i++)
+	{
+		if (movesRosterVector[i].getMoveID() == id)
+		{
+			for (std::vector<int>::size_type j = 0; j != movesRosterVector.size(); j++) {
+				movesRosterVector[j];
+			}
+			found = true;
+		}
+	}
+	if (found == false) {
+		std::cout << "Move not found error: " << std::endl;
+	}
+	else {
+		return movesRosterVector[id];
+	}
+}
+
+void Move::printMoveName(std::string name) {
+
+	for (std::vector<int>::size_type i = 0; i != movesRosterVector.size(); i++) {
+		if (movesRosterVector[i].getName() == name) {
+			movesRosterVector[i].printMoveInfo();
+		}
+	}
 }
 
 /// TEST FUNCTIONS BELOW
@@ -103,6 +136,7 @@ void Move::print() {
 
 void Move::printMoveInfo() {
 
+	//std::cout << "Index: " << id << "\t";
 	std::cout << "First name: " << name << "\t";
 	std::cout << "Base damage: " << baseDamage << "\t";
 	std::cout << "Base hit chance: " << baseHitChance << "\t";
@@ -110,11 +144,10 @@ void Move::printMoveInfo() {
 
 }
 
-void Move::printMoveByID() {
+void Move::printMoveByID(int id) {
 	
-	int ID{ };
 	std::cout << "Pick a number between 1 and 6: ";
-	std::cin >> ID;
-	movesRosterVector[ID].printMoveInfo();
+	std::cin >> id;
+	movesRosterVector[id].printMoveInfo();
 
 }

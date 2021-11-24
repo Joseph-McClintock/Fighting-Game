@@ -3,7 +3,6 @@
 #include <vector>
 #include "fighters.h"
 #include "moves.h"
-//#include "MovesRoster.h"
 
 
 //using namespace std;
@@ -15,6 +14,8 @@ int main()
     
     Fighter* fighterRoster = new Fighter();
     fighterRoster->parseFightersAndMoves();
+
+    fighterRoster->displayChosenFighter();
 
     std::cout << "Hello World!\n";
 

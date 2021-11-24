@@ -3,7 +3,6 @@
 #include <vector>
 #include "fighters.h"
 
-
 Fighter::Fighter() {
 	name = "Default";
 	health = 10;
@@ -41,8 +40,8 @@ void Fighter::parseFightersAndMoves() {
 		}
 		myFile.close();
 	}
-
 	for (std::vector<int>::size_type i = 0; i != fighterInfo.size(); i++) {
+
 		size_t rhs = fighterInfo[i].find(", ");
 		std::string name = fighterInfo[i].substr(0, rhs);
 
@@ -58,55 +57,47 @@ void Fighter::parseFightersAndMoves() {
 		rhs = fighterInfo[i].find(", ", lhs);
 		int defense = std::stoi(fighterInfo[i].substr(lhs, rhs - lhs));
 
+
+		lhs = rhs + 1;
+		rhs = fighterInfo[i].find(", ", lhs);
+		int move1 = std::stoi(fighterInfo[i].substr(lhs, rhs - lhs));
+
+		lhs = rhs + 1;
+		rhs = fighterInfo[i].find(", ", lhs);
+		int move2 = std::stoi(fighterInfo[i].substr(lhs, rhs - lhs));
+
+		lhs = rhs + 1;
+		rhs = fighterInfo[i].find(", ", lhs);
+		int move3 = std::stoi(fighterInfo[i].substr(lhs, rhs - lhs));
+		
 		//Fix
 
-		lhs = rhs + 1;
-		rhs = fighterInfo[i].find(", ", lhs);
-		std::string move1 = fighterInfo[i].substr(lhs, rhs - lhs);
-
-		lhs = rhs + 1;
-		rhs = fighterInfo[i].find(", ", lhs);
-		std::string move2 = fighterInfo[i].substr(lhs, rhs - lhs);
-
-		lhs = rhs + 1;
-		rhs = fighterInfo[i].find(", ", lhs);
-		std::string move2 = fighterInfo[i].substr(lhs, rhs - lhs);
-
 		int currentIndex{ 0 };
-		movesFighterVector.push_back(Fighter(name, health, atkPower, defense, move1, move2, move3));
+		movesFighterVector.push_back(Fighter(name, health, atkPower, defense, moveRoster->addMoveData(move1), moveRoster->addMoveData(move2), moveRoster->addMoveData(move3)));
 		currentIndex++;
+
 	}
 	
 
 }
 
-void mainMenu() {
+void Fighter::displayChosenFighter() {
+
+	for (std::vector<int>::size_type i = 0; i != movesFighterVector.size(); i++) {
+		movesFighterVector[i].openFighterData();
+	}
 
 }
 
-void pickFighter(int playerChoice) {
-
-}
-
-void displayChosenFighter() {
-	
-}
-
-void startBattleSequence(Fighter) {
-
-}
 
 void Fighter::openFighterData() {
 
-	std::ifstream myFile;
-	std::vector<std::string> fighterInfo;
-	myFile.open("info.txt", std::ios::in);
-	if (myFile.is_open()) {
-		std::string line;
-		while (getline(myFile, line)) {
-			fighterInfo.push_back(line);
-		}
-		myFile.close();
-	}
+	std::cout << "Name: " << name << "\t";
+	std::cout << "Health: " << health << "\t";
+	std::cout << "Attack power: " << atkPower << "\t";
+	std::cout << "Defense: " << defense << "\t" <<std::endl;
+	move1.printMoveInfo();
+	move2.printMoveInfo();
+	move3.printMoveInfo();
 
 }

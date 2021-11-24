@@ -1,0 +1,9 @@
+Default, 1, 1, 1, DefaultMove, DefaultMove, DefaultMove
+Billy, 100, 10, 10, DefaultMove, Fire, Water
+Jimmy, 100, 10, 10, DefaultMove, Fire, Water
+Joey, 100, 10, 10, DefaultMove, Fire, Water
+Susy, 100, 10, 10, DefaultMove, Fire, Water
+Luna, 100, 10, 10, DefaultMove, Fire, Water
+Addison, 100, 10, 10, DefaultMove, Fire, Water
+Connor, 100, 10, 10, DefaultMove, Fire, Water
+Zeek, 100, 10, 10, DefaultMove, Fire, Water
