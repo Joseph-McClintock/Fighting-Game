@@ -20,12 +20,15 @@ public:
 	Fighter();
 	Fighter(std::string name, int health, int atkPower, int defense, Move move1, Move move2, Move move3);
 
+	std::string getName() const;
+	int getHealth() const;
+	
 
 	void parseFightersAndMoves();
+	Fighter selectFighter();
+	void battleSequence();
 	void openFighterData();
-	void mainMenu();
-	int pickFighter(int playerChoice);
-	void startBattleSequence(Fighter);
 	void displayChosenFighter();
+	void printDefualtFighterData();
 
 };

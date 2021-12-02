@@ -137,10 +137,15 @@ void Move::print() {
 void Move::printMoveInfo() {
 
 	//std::cout << "Index: " << id << "\t";
-	std::cout << "First name: " << name << "\t";
-	std::cout << "Base damage: " << baseDamage << "\t";
-	std::cout << "Base hit chance: " << baseHitChance << "\t";
-	std::cout << "Base reduce hit chance: " << baseReduceHitChance << std::endl;
+	std::cout << "" << name << "\t";
+	std::cout << "Damage: " << baseDamage << "\t";
+	std::cout << "Hit chance: " << baseHitChance << "\t";
+	if (baseReduceHitChance > 0) {
+		std::cout << "Reduces enemy hit chance by: " << baseReduceHitChance << "%\n" << std::endl;
+	}
+	else {
+		std::cout << std::endl;
+	}
 
 }
 

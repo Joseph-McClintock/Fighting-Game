@@ -15,7 +15,10 @@ int main()
     Fighter* fighterRoster = new Fighter();
     fighterRoster->parseFightersAndMoves();
 
-    fighterRoster->displayChosenFighter();
+
+    fighterRoster->fightingFightStuff();
+
+    //fighterRoster->displayChosenFighter();
 
     std::cout << "Hello World!\n";
 

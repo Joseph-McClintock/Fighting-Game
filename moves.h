@@ -34,7 +34,6 @@ public:
 	void setBaseDamage(int baseDamage);
 	void setBaseHitChance(int baseHitChance);
 	void setBaseReduceHitChance(int baseReduceHitChance);
-	void setMove(int id);
 
 	//Print info
 
