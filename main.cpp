@@ -16,7 +16,7 @@ int main()
     fighterRoster->parseFightersAndMoves();
 
 
-    fighterRoster->fightingFightStuff();
+    fighterRoster->battleSequence();
 
     //fighterRoster->displayChosenFighter();
 
