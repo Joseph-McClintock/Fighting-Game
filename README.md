@@ -1,6 +1,6 @@
 # Fighting-Game
 
-Very Pokemon type fighting game based in the console. The user can add or remove fighters and moves in the fighterInfo.txt and movesInfo.txt.
+Very basic Pokemon type fighting game based in the console. The user can add or remove fighters and moves in the fighterInfo.txt and movesInfo.txt.
 
 Urgent Things TODO:
 1. Develop basic enemy AI
