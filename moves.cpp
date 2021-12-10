@@ -4,10 +4,10 @@
 #include "fighters.h"
 
 Move::Move() {
-	/*name = "Base Move";
+	name = "DEFAULT";
 	baseDamage = 1;
-	baseHitChance = 90;
-	baseReduceHitChance = 0;*/
+	baseHitChance = 1;
+	baseReduceHitChance = 0;
 }
 Move::Move(int id, std::string name, int baseDamage, int baseHitChance, int baseReduceHitChance) {
 	this->id = id;
@@ -15,7 +15,6 @@ Move::Move(int id, std::string name, int baseDamage, int baseHitChance, int base
 	this->baseDamage = baseDamage;
 	this->baseHitChance = baseHitChance;
 	this->baseReduceHitChance = baseReduceHitChance;
-	this->movesRosterVector = movesRosterVector;
 }
 
 //Getters
@@ -87,7 +86,7 @@ void Move::parseMoves() {
 		int baseReduceHitChance = std::stoi(moveInfo[i].substr(lhs, rhs - lhs));
 
 		int currentIndex{ 0 };
-		movesRosterVector.push_back(Move(id, name, baseDamage, baseHitChance, baseReduceHitChance));
+		moveRoster.push_back(Move(id, name, baseDamage, baseHitChance, baseReduceHitChance));
 		currentIndex++;
 
 	}
@@ -97,12 +96,12 @@ void Move::parseMoves() {
 Move Move::addMoveData(int id) {
 
 	bool found = false;
-	for (std::vector<int>::size_type i = 0; i != movesRosterVector.size(); i++)
+	for (std::vector<int>::size_type i = 0; i != moveRoster.size(); i++)
 	{
-		if (movesRosterVector[i].getMoveID() == id)
+		if (moveRoster[i].getMoveID() == id)
 		{
-			for (std::vector<int>::size_type j = 0; j != movesRosterVector.size(); j++) {
-				movesRosterVector[j];
+			for (std::vector<int>::size_type j = 0; j != moveRoster.size(); j++) {
+				moveRoster[j];
 			}
 			found = true;
 		}
@@ -111,26 +110,7 @@ Move Move::addMoveData(int id) {
 		std::cout << "Move not found error: " << std::endl;
 	}
 	else {
-		return movesRosterVector[id];
-	}
-}
-
-void Move::printMoveName(std::string name) {
-
-	for (std::vector<int>::size_type i = 0; i != movesRosterVector.size(); i++) {
-		if (movesRosterVector[i].getName() == name) {
-			movesRosterVector[i].printMoveInfo();
-		}
-	}
-}
-
-/// TEST FUNCTIONS BELOW
-/// DELETE LATER
-
-void Move::print() {
-
-	for (std::vector<int>::size_type i = 0; i != movesRosterVector.size(); i++) {
-		movesRosterVector[i].printMoveInfo();
+		return moveRoster[id];
 	}
 }
 
@@ -146,13 +126,5 @@ void Move::printMoveInfo() {
 	else {
 		std::cout << std::endl;
 	}
-
-}
-
-void Move::printMoveByID(int id) {
-	
-	std::cout << "Pick a number between 1 and 6: ";
-	std::cin >> id;
-	movesRosterVector[id].printMoveInfo();
 
 }

@@ -1,26 +1,7 @@
-#include <iostream>
-#include <fstream>
-#include <vector>
-#include "fighters.h"
-#include "moves.h"
-
-
-//using namespace std;
+#include "MainLoop.h"
 
 int main()
 { 
-
-    //Opens Move Info text file
-    
-    Fighter* fighterRoster = new Fighter();
-    fighterRoster->parseFightersAndMoves();
-
-
-    fighterRoster->battleSequence();
-
-    //fighterRoster->displayChosenFighter();
-
-    std::cout << "Hello World!\n";
-
-
+    MainLoop::run();
+    return 0;
 }

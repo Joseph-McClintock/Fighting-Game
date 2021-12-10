@@ -139,13 +139,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="EnemyAI.cpp" />
+    <ClCompile Include="MainLoop.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="fighters.cpp" />
     <ClCompile Include="moves.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="fighters.h" />
+    <ClInclude Include="MainLoop.h" />
     <ClInclude Include="moves.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

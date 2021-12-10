@@ -1,5 +1,4 @@
 #pragma once
-//#include "MovesRoster.h"
 #include <vector>
 #include <string>
 
@@ -12,8 +11,7 @@ private:
 	int baseDamage;
 	int baseHitChance;
 	int baseReduceHitChance;
-	std::vector<Move> movesRosterVector;
-	//std::vector<int> movesRosterVectorLocation;
+	std::vector<Move> moveRoster;
 
 public:
 
@@ -37,12 +35,9 @@ public:
 
 	//Print info
 
-	void printMoveName(std::string name);
+	void parseMoves();
 	Move addMoveData(int ID);
 	void printMoveInfo();
-	void parseMoves();
-	void print();
-	void printMoveByID(int id);
 
 };
 

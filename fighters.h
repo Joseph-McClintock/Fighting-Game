@@ -23,12 +23,9 @@ public:
 	std::string getName() const;
 	int getHealth() const;
 	
-
-	void parseFightersAndMoves();
-	Fighter selectFighter();
-	void battleSequence();
-	void openFighterData();
-	void displayChosenFighter();
+	void parseFighters();
+	int selectFighter(int *playerChoice);
 	void printDefualtFighterData();
+	void displayPlayerData(int id);
 
 };

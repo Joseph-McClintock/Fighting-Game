@@ -29,7 +29,7 @@ int Fighter::getHealth() const {
 	return health;
 }
 
-void Fighter::parseFightersAndMoves() {
+void Fighter::parseFighters() {
 
 	//Parse Moves
 	Move* moveRoster = new Move();
@@ -75,8 +75,6 @@ void Fighter::parseFightersAndMoves() {
 		lhs = rhs + 1;
 		rhs = fighterInfo[i].find(", ", lhs);
 		int move3 = std::stoi(fighterInfo[i].substr(lhs, rhs - lhs));
-		
-		//Fix
 
 		int currentIndex{ 0 };
 		movesFighterVector.push_back(Fighter(name, health, atkPower, defense, moveRoster->addMoveData(move1), moveRoster->addMoveData(move2), moveRoster->addMoveData(move3)));
@@ -87,9 +85,8 @@ void Fighter::parseFightersAndMoves() {
 
 }
 
-void Fighter::battleSequence() {
+int Fighter::selectFighter(int *playerChoice) {
 
-	int playerChoice{ 0 };
 	std::cout << "Displaying the 3 default fighters: " << std::endl;
 
 	for (int i = 1; i < 4; i++) {
@@ -97,47 +94,18 @@ void Fighter::battleSequence() {
 		movesFighterVector[i].printDefualtFighterData();
 	}
 
-	while (playerChoice < 1 || playerChoice > 3) {
+	while (*playerChoice < 1 || *playerChoice > 3) {
 		std::cout << "\nChoose a fighter: ";
-		std::cin >> playerChoice;
+		std::cin >> *playerChoice;
 
-		if (playerChoice < 1 || playerChoice > 3) {
+		if (*playerChoice < 1 || *playerChoice > 3) {
 			std::cout << "Try again pick 1, 2, or 3";
 		}
 	}
-	
 	system("cls");
-	std::cout << "\nYou have picked: " << movesFighterVector[playerChoice].name << "!\n" << std::endl;
+	std::cout << "You have picked: " << movesFighterVector[*playerChoice].name << "!\n" << std::endl;
 
-	//movesFighterVector[playerChoice].openFighterData();
-
-	std::cout << "Pick a move to attack with" << std::endl;
-	movesFighterVector[playerChoice].move1.printMoveInfo();
-	movesFighterVector[playerChoice].move2.printMoveInfo();
-	movesFighterVector[playerChoice].move3.printMoveInfo();
-
-	//std::cout << "Health: " << movesFighterVector[playerChoice].health << "\t";
-	//movesFighterVector[playerChoice].health = movesFighterVector[playerChoice].health - 50;
-	//std::cout << "Health: " << movesFighterVector[playerChoice].health << "\t";
-
-}
-
-//Fighter Fighter::selectFighter() {
-//
-//	int playerChoice{};
-//	std::cout << "Please pick one of the 3 default fighters: ";
-//	std::cin >> playerChoice;
-//
-//	movesFighterVector[playerChoice].getName();
-//
-//}
-
-void Fighter::displayChosenFighter() {
-
-	for (std::vector<int>::size_type i = 0; i != movesFighterVector.size(); i++) {
-		movesFighterVector[i].openFighterData();
-	}
-
+	return *playerChoice;
 }
 
 void Fighter::printDefualtFighterData() {
@@ -149,17 +117,18 @@ void Fighter::printDefualtFighterData() {
 	move1.printMoveInfo();
 	move2.printMoveInfo();
 	move3.printMoveInfo();
+	
 
 }
 
-void Fighter::openFighterData() {
+void Fighter::displayPlayerData(int id) {
 
-	std::cout << "Name: " << name << "\t";
-	std::cout << "Health: " << health << "\t";
-	std::cout << "Attack power: " << atkPower << "\t";
-	std::cout << "Defense: " << defense << "\t" <<std::endl;
-	move1.printMoveInfo();
-	move2.printMoveInfo();
-	move3.printMoveInfo();
+	std::cout << "Name: " << movesFighterVector[id].name << "\t";
+	std::cout << "Health: " << movesFighterVector[id].health << "\t";
+	std::cout << "Attack power: " << movesFighterVector[id].atkPower << "\t";
+	std::cout << "Defense: " << movesFighterVector[id].defense << "\t" <<std::endl;
+	movesFighterVector[id].move1.printMoveInfo();
+	movesFighterVector[id].move2.printMoveInfo();
+	movesFighterVector[id].move3.printMoveInfo();
 
 }
