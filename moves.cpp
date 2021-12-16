@@ -107,7 +107,8 @@ Move Move::addMoveData(int id) {
 		}
 	}
 	if (found == false) {
-		std::cout << "Move not found error: " << std::endl;
+		std::cout << "Move not found error... Setting move to default move: " << std::endl;
+		return moveRoster[0];
 	}
 	else {
 		return moveRoster[id];
@@ -116,8 +117,7 @@ Move Move::addMoveData(int id) {
 
 void Move::printMoveInfo() {
 
-	//std::cout << "Index: " << id << "\t";
-	std::cout << "" << name << "\t";
+	std::cout << name << "\t";
 	std::cout << "Damage: " << baseDamage << "\t";
 	std::cout << "Hit chance: " << baseHitChance << "\t";
 	if (baseReduceHitChance > 0) {

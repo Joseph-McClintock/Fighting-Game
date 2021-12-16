@@ -9,23 +9,26 @@ public:
 	int health;
 	int atkPower;
 	int defense;
-	Move move1;
-	Move move2;
-	Move move3;
+	std::vector<Move> moves;
 
-	std::vector<Fighter> movesFighterVector;
+	std::vector<Fighter> fighterRoster;
 
 public:
 	
 	Fighter();
-	Fighter(std::string name, int health, int atkPower, int defense, Move move1, Move move2, Move move3);
+	Fighter(std::string name, int health, int atkPower, int defense, std::vector<Move> moves);
 
 	std::string getName() const;
 	int getHealth() const;
 	
 	void parseFighters();
-	int selectFighter(int *playerChoice);
-	void printDefualtFighterData();
-	void displayPlayerData(int id);
+
+	Fighter selectFighter(Fighter *playerInput);
+
+	void printFighterData();
+
+	void pickAttack();
+
+	Fighter selectAIFighter(Fighter* aiChoice);
 
 };
