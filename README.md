@@ -6,7 +6,6 @@ Urgent Things TODO:
 1. Develop basic enemy AI
 
 ~~2. Make the AI select a fighter~~
-
 ~~3. Make the moves an array and not 3 separate things~~
 
 4. Finish the battle sequence function
