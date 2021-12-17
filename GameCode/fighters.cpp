@@ -36,7 +36,7 @@ void Fighter::parseFighters() {
 
 	std::ifstream myFile;
 	std::vector<std::string> fighterInfo;
-	myFile.open("fighterinfo.txt", std::ios::in);
+	myFile.open("../fighterinfo.txt", std::ios::in);
 	if (myFile.is_open()) {
 		std::string line;
 		while (getline(myFile, line)) {
@@ -125,7 +125,7 @@ void Fighter::printFighterData() {
 	
 }
 
-void Fighter::pickAttack() {
+int Fighter::pickAttack() {
 
 	int playerChoice{};
 
@@ -142,6 +142,16 @@ void Fighter::pickAttack() {
 			std::cout << "Try again pick 1, 2, or 3";
 		}
 	}
+	return playerChoice;
+}
+
+int Fighter::calculateAttackDmg(int attack) {
+
+	int damage{ };
+	attack = attack - 1;
+	damage = moves[attack].getBaseDamage();
+
+	return damage;
 }
 
 //AI functions -------------

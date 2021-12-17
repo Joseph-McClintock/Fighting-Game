@@ -27,7 +27,9 @@ public:
 
 	void printFighterData();
 
-	void pickAttack();
+	int pickAttack();
+
+	int calculateAttackDmg(int attack);
 
 	Fighter selectAIFighter(Fighter* aiChoice);
 

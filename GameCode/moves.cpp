@@ -55,7 +55,7 @@ void Move::parseMoves() {
 
 	std::ifstream myFile;
 	std::vector<std::string> moveInfo;
-	myFile.open("moveinfo.txt", std::ios::in);
+	myFile.open("../moveinfo.txt", std::ios::in);
 	if (myFile.is_open()) {
 		std::string line2;
 		while (getline(myFile, line2)) {
