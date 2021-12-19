@@ -7,7 +7,7 @@ Urgent Things TODO:
 2. Make the AI select a fighter ✔
 3. Make the moves an array and not 3 separate things ✔
 4. Finish the battle sequence function
-5. Add the ability for the player to keep playing after the first fight
+5. Add the ability for the player to keep playing after the first fight ✔
 
 Future Plans:
 1. Player class
