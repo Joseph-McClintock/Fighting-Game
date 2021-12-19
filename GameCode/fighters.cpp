@@ -101,7 +101,9 @@ Fighter Fighter::selectFighter(Fighter *playerInput) {
 		std::cout << "\nChoose a fighter: ";
 		std::cin >> playerChoice;
 
-		if (playerChoice < 1 || playerChoice > 3) {
+		if (std::cin.fail()) {
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			std::cout << "Try again pick 1, 2, or 3";
 		}
 	}
@@ -110,6 +112,11 @@ Fighter Fighter::selectFighter(Fighter *playerInput) {
 
 	*playerInput = fighterRoster[playerChoice];
 	return *playerInput;
+}
+
+void Fighter::displayInfo(Fighter player, Fighter enemy) {
+	std::cout << player.name << " ------- vs ------- " << enemy.name << std::endl;
+	std::cout << player.health << " ------- Health ------- " << enemy.health << std::endl;
 }
 
 void Fighter::printFighterData() {
@@ -127,7 +134,7 @@ void Fighter::printFighterData() {
 
 int Fighter::pickAttack() {
 
-	int playerChoice{};
+	int playerChoice{ };
 
 	std::cout << std::endl;
 	for (int i = 0; i < 3; i++) {
@@ -138,7 +145,9 @@ int Fighter::pickAttack() {
 		std::cout << "\nPick an attack 1 - 3: ";
 		std::cin >> playerChoice;
 
-		if (playerChoice < 1 || playerChoice > 3) {
+		if (std::cin.fail()) {
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			std::cout << "Try again pick 1, 2, or 3";
 		}
 	}
@@ -149,7 +158,7 @@ int Fighter::calculateAttackDmg(int attack) {
 
 	int damage{ };
 	attack = attack - 1;
-	damage = moves[attack].getBaseDamage();
+	damage = moves[attack].getBaseDamage() + atkPower;
 
 	return damage;
 }
@@ -158,7 +167,7 @@ int Fighter::calculateAttackDmg(int attack) {
 
 Fighter Fighter::selectAIFighter(Fighter* aiChoice) {
 
-	int ai{};
+	int ai{ };
 	std::srand(time(0));
 	ai = (rand() % fighterRoster.size());
 
@@ -168,4 +177,10 @@ Fighter Fighter::selectAIFighter(Fighter* aiChoice) {
 	
 	*aiChoice = fighterRoster[ai];
 	return *aiChoice;
+}
+
+int Fighter::selectAIAttack() {
+
+	
+	return 0;
 }
