@@ -195,7 +195,7 @@ int Fighter::selectAIAttack() {
 	std::cout << "\nThe AI is selecting its attack" << std::endl;
 	std::this_thread::sleep_for(2s);
 
-	srand(time(0));
+	std::srand(time(0));
 	int randNum = (rand() % 3) + 1;
 
 	aiChoice = randNum;
