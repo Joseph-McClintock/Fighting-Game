@@ -1,7 +1,11 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <chrono>
+#include <thread>
 #include "fighters.h"
+
+using namespace std::chrono_literals;
 
 Fighter::Fighter() {
 	name = "Default";
@@ -181,6 +185,20 @@ Fighter Fighter::selectAIFighter(Fighter* aiChoice) {
 
 int Fighter::selectAIAttack() {
 
-	
-	return 0;
+	int aiChoice{ };
+
+	std::cout << std::endl;
+	for (int i = 0; i < 3; i++) {
+		moves[i].printMoveInfo();
+	}
+
+	std::cout << "\nThe AI is selecting its attack" << std::endl;
+	std::this_thread::sleep_for(2s);
+
+	srand(time(0));
+	int randNum = (rand() % 3) + 1;
+
+	aiChoice = randNum;
+
+	return aiChoice;
 }

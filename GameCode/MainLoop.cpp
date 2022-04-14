@@ -48,7 +48,8 @@ void MainLoop::run() {
 			while (!playerTurn && !gameOver) {
 				enemy.displayInfo(player, enemy);
 
-				currentAttack = enemy.pickAttack();
+				currentAttack = enemy.selectAIAttack();
+				std::cout << currentAttack << std::endl;
 				player.health = player.health - enemy.calculateAttackDmg(currentAttack);
 
 				playerTurn = true;
